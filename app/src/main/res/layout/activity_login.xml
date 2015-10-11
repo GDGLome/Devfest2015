@@ -18,12 +18,12 @@
         android:src="@drawable/devfest"/> -->
     <TextView
         android:layout_above="@+id/llBannerBottom"
-        android:text="DevFest 2015"
+        android:text="DevFest Lomé 2015"
         android:gravity="center"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="35dp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
