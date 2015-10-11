@@ -50,14 +50,31 @@
             android:text="S'identifier" />
 
 
-        <EditText
-            android:id="@+id/email"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:singleLine="true"
-            style="@style/EditTextStyle"/>
+            android:weightSum="1">
+            <EditText
+                android:id="@+id/confirmation_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:hint="Code de confirmation"
+                android:layout_marginRight="5dp"
+                android:singleLine="true"
+                style="@style/EditTextStyle"/>
+            <Button
+                android:id="@+id/btn_scan"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="0.2"
+                style="@style/btn_style_min"
+                android:layout_marginLeft="5dp"
+                android:onClick="scan"
+                android:text="Scan"/>
+        </LinearLayout>
+
 
 
         <Button
