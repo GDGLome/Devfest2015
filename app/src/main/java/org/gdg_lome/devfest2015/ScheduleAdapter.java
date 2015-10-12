@@ -5,25 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.gdg_lome.devfest2015.model.Track;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * Created by setico on 25/12/14.
+ * Created by setico on 25/09/15.
  */
-public class ProgrammeAdapter extends BaseAdapter {
+public class ScheduleAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Track> tracks;
+    private ArrayList<Track> tracks;
     /**
      * Cache of the children views for a track list item.
      */
 
-    public ProgrammeAdapter(Context context, List<Track> tracks){
+    public ScheduleAdapter(Context context, ArrayList<Track> tracks){
         this.context = context;
         this.tracks = tracks;
     }
@@ -64,7 +63,7 @@ public class ProgrammeAdapter extends BaseAdapter {
         View v = view;
         ViewHolder viewHolder;
         if (v == null) {
-            v = LayoutInflater.from(context).inflate(R.layout.programme_items,viewGroup,false);
+            v = LayoutInflater.from(context).inflate(R.layout.schedule_items,viewGroup,false);
             viewHolder = new ViewHolder(v);
             v.setTag(viewHolder);
         } else {

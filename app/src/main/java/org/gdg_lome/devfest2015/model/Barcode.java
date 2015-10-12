@@ -15,7 +15,6 @@ public class Barcode {
 
     @JsonCreator
     public Barcode(){
-
     }
     @JsonCreator
     public Barcode(@JsonProperty("status") String status,@JsonProperty("barcode") String barcode,@JsonProperty("checkin_type") int checkin_type,@JsonProperty("created") String created,@JsonProperty("changed") String changed) {

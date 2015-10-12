@@ -32,7 +32,14 @@ public class Utils {
     public static final String ATTENDEES_URL="https://www.eventbriteapi.com/v3/events/"+EVENT_ID+"/attendees/?token="+TOKEN;
     public static final String BACKEND_URL = "https://devfestlome.firebaseio.com";
     public static final String PREFS_ATTENDEE_ID="attendee_id";
+    public static final String SCHEDULE_ID="schedule_id";
     public static final String BACKEND_ATTENDEE_PATH="attendees";
+    public static final String BACKEND_SCHEDULE_PATH="schedules";
+    public static final String BACKEND_CONFERENCE_PATH="0";
+    public static final String BACKEND_CODELAB_PATH="1";
+    public static final String BACKEND_TRACK_PATH="tracks";
+    public static final String BACKEND_SPEAKER_PATH="speakers";
+    public static final String BACKEND_SPONSOR_PATH="sponsors";
 
 
     public static String request(String URL){
