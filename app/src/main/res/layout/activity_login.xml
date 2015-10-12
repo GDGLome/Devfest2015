@@ -101,12 +101,13 @@
 
             <TextView
                 android:textSize="18sp"
-                android:id="@+id/login"
+                android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5.0dip"
                 android:textColor="@color/myPrimaryColor"
-                android:text="S'inscrire" />
+                android:text="S'inscrire."
+                android:onClick="register"/>
         </LinearLayout>
 
 
