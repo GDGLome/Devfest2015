@@ -24,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.gdg_lome.devfest2015.R;
@@ -229,8 +230,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    public void setUserData(String email) {
+    public void setUserData(String email, Bitmap bitmap) {
         ((TextView) mFragmentContainerView.findViewById(R.id.txtUserEmail)).setText(email);
+        ((ImageView) mFragmentContainerView.findViewById(R.id.qrcode)).setImageBitmap(bitmap);
     }
 
     public View getGoogleDrawer() {

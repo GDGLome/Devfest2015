@@ -1,11 +1,15 @@
 package org.gdg_lome.devfest2015;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.util.Log;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -14,13 +18,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by setico on 11/10/15.
  */
 public class Utils {
-    public static final String TOKEN ="";
+    public static final String TOKEN ="AK5I2DJWWCZ2BTLM7UBK";
     public static final String EVENT_ID="17036476560";
     public static final String EVENT_URL="https://www.eventbrite.com/e/google-io-extended-lome-2015-tickets-17036476560";
     public static final String ATTENDEES_URL="https://www.eventbriteapi.com/v3/events/"+EVENT_ID+"/attendees/?token="+TOKEN;
@@ -107,5 +110,22 @@ public class Utils {
         if(networkInfo!=null)
             return true;
         return false;
+    }
+
+    public static Bitmap createQRCode(){
+        Bitmap bitmap = Bitmap.createBitmap(150, 150, Bitmap.Config.ARGB_8888);
+        try {
+            BitMatrix bitMatrix = new QRCodeWriter().encode("5782902303038", BarcodeFormat.QR_CODE, 150, 150);
+
+            for (int i = 0; i < 150; i++) {//width
+                for (int j = 0; j < 150; j++) {//height
+                    bitmap.setPixel(i, j, bitMatrix.get(i, j) ? Color.BLACK: Color.WHITE);
+                }
+            }
+        }catch (Exception e){
+
+        }
+
+        return bitmap;
     }
 }
