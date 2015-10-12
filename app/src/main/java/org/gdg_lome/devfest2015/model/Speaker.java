@@ -3,10 +3,12 @@ package org.gdg_lome.devfest2015.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by setico on 12/10/15.
  */
-public class Speaker {
+public class Speaker implements Serializable {
 
     @JsonProperty("name") private String name;
     @JsonProperty("description") private String description;

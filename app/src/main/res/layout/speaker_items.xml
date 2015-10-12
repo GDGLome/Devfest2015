@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/left_content"
+                  android:layout_width="match_parent"
+                  android:layout_height="?attr/listPreferredItemHeightLarge"
+                  android:layout_alignParentLeft="true"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal"
+        android:background="@drawable/row_selector">
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/speaker_image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout android:id="@+id/center_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+            <TextView
+                android:textSize="@dimen/list_name"
+                android:typeface="sans"
+                android:id="@+id/speaker_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"/>
+            <TextView
+                android:id="@+id/speaker_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_alignParentBottom="true"
+                android:ellipsize="end"
+                android:textSize="@dimen/list_adresse"
+                android:typeface="sans"
+                android:textColor="@color/text_gray"/>
+        </LinearLayout>
+
+    </LinearLayout>

@@ -3,10 +3,12 @@ package org.gdg_lome.devfest2015.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by setico on 12/10/15.
  */
-public class Schedule {
+public class Schedule implements Serializable {
     @JsonProperty("date") private String date;
     @JsonProperty("title") private String title;
     @JsonProperty("description") private String description;

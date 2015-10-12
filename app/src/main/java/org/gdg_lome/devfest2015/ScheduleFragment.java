@@ -83,7 +83,8 @@ public class ScheduleFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(), SpeakersDetailActivity.class));
+                Intent i = new Intent(getActivity(), SpeakersDetailActivity.class);
+                startActivity(i);
             }
         });
         return rootView;
