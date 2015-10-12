@@ -2,15 +2,24 @@ package org.gdg_lome.devfest2015;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseApp;
+import com.google.gson.Gson;
+
+import org.gdg_lome.devfest2015.model.Attendee;
+import org.gdg_lome.devfest2015.model.Barcode;
 import org.gdg_lome.devfest2015.scanner.ScannerActivity;
 import org.json.JSONObject;
 
@@ -20,11 +29,17 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tv_register;
     private final String BARCODE="barcode";
     private final int SCANNER_ID=100;
+    private String attendee_id;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        attendee_id = Devfest2015Application.prefs.getString(Utils.PREFS_ATTENDEE_ID,null);
+        if(attendee_id!=null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
         setContentView(R.layout.activity_login);
         tf_confirmation_code = (EditText) findViewById(R.id.confirmation_code);
         tv_register = (TextView)findViewById(R.id.register);
@@ -40,10 +55,12 @@ public class LoginActivity extends AppCompatActivity {
         authTask.setAuthListener(new Utils.AttendeeAuthListener() {
 
             @Override
-            public void authSuccessfully(JSONObject data) {
-                //Log.i("loged", data.toString());
+            public void authSuccessfully(Attendee attendee) {
+                Devfest2015Application.devfestBackend.child("attendees").child(attendee.getId()).setValue(attendee);
+                Devfest2015Application.prefs.edit().putString(Utils.PREFS_ATTENDEE_ID,attendee.getId()).commit();
                 progressDialog.dismiss();
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
 
             }
 

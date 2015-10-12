@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
+import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
@@ -14,6 +15,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.gdg_lome.devfest2015.model.Attendee;
+import org.gdg_lome.devfest2015.model.Barcode;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,6 +30,9 @@ public class Utils {
     public static final String EVENT_ID="17036476560";
     public static final String EVENT_URL="https://www.eventbrite.com/e/google-io-extended-lome-2015-tickets-17036476560";
     public static final String ATTENDEES_URL="https://www.eventbriteapi.com/v3/events/"+EVENT_ID+"/attendees/?token="+TOKEN;
+    public static final String BACKEND_URL = "https://devfestlome.firebaseio.com";
+    public static final String PREFS_ATTENDEE_ID="attendee_id";
+    public static final String BACKEND_ATTENDEE_PATH="attendees";
 
 
     public static String request(String URL){
@@ -86,9 +92,18 @@ public class Utils {
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
             super.onPostExecute(jsonObject);
+            Attendee attendee =null ;
+            try{
+            attendee = new Attendee(jsonObject.getString("id"),
+                    jsonObject.getJSONObject("profile").getString("name"),
+                    jsonObject.getJSONObject("profile").getString("email"),
+                    new Gson().fromJson(jsonObject.getJSONArray("barcodes").getJSONObject(0).toString(), Barcode.class));
+            }catch (Exception e){
+
+            }
             if(jsonObject!=null)
             {
-                authListener.authSuccessfully(jsonObject);
+                authListener.authSuccessfully(attendee);
             }
             else
                 authListener.authFailed();
@@ -100,7 +115,7 @@ public class Utils {
 
 
     public interface AttendeeAuthListener {
-        void authSuccessfully(JSONObject data);
+        void authSuccessfully(Attendee attendee);
         void authFailed();
     }
 
@@ -112,10 +127,10 @@ public class Utils {
         return false;
     }
 
-    public static Bitmap createQRCode(){
+    public static Bitmap createQRCode(String barcode){
         Bitmap bitmap = Bitmap.createBitmap(150, 150, Bitmap.Config.ARGB_8888);
         try {
-            BitMatrix bitMatrix = new QRCodeWriter().encode("5782902303038", BarcodeFormat.QR_CODE, 150, 150);
+            BitMatrix bitMatrix = new QRCodeWriter().encode(barcode, BarcodeFormat.QR_CODE, 150, 150);
 
             for (int i = 0; i < 150; i++) {//width
                 for (int j = 0; j < 150; j++) {//height
