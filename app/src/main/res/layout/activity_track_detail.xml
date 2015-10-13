@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/schedule_icon"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_schedule"
                     android:layout_width="60dp"
@@ -77,6 +78,38 @@
             </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="18sp"
+                        android:typeface="sans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="Salle:"
+                        android:paddingRight="10dp"
+                        android:textColor="@android:color/white"
+                        android:layout_centerVertical="true"
+                        android:ellipsize="end"/>
+                    <TextView
+                        android:id="@+id/track_room"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="newton"
+                        android:ellipsize="end"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:typeface="sans"/>
+                </LinearLayout>
+
+
             </RelativeLayout>
 
         <android.support.v7.widget.CardView
@@ -99,12 +132,14 @@
         <android.support.v7.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:cardview="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/speaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             cardview:cardElevation="2dp"
             android:gravity="center_vertical"
             android:layout_margin="10dp"
-            cardview:cardUseCompatPadding="true">
+            cardview:cardUseCompatPadding="true"
+            android:clickable="true">
             <include
                 layout="@layout/speaker_items"/>
         </android.support.v7.widget.CardView>
