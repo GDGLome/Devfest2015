@@ -1,6 +1,7 @@
 package org.gdg_lome.devfest2015;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,52 +9,53 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.GridView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import org.gdg_lome.devfest2015.adapter.SpeakerAdapter;
-import org.gdg_lome.devfest2015.model.Speaker;
+import org.gdg_lome.devfest2015.adapter.SponsorAdapter;
+import org.gdg_lome.devfest2015.model.Sponsor;
 
 import java.util.ArrayList;
 
 
-public class SpeakerActivity extends AppCompatActivity {
+public class SponsorActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private ListView list;
-    private SpeakerAdapter adapter;
-    private ArrayList<Speaker> speakers = new ArrayList<Speaker>();
+    private GridView list;
+    private SponsorAdapter adapter;
+    private ArrayList<Sponsor> sponsors = new ArrayList<Sponsor>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speaker);
+        setContentView(R.layout.activity_sponsor);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Les speakers");
-        list = (ListView) findViewById(R.id.list);
-        adapter = new SpeakerAdapter(this,speakers);
+        setTitle("Les sponsors");
+        list = (GridView) findViewById(R.id.list);
+        adapter = new SponsorAdapter(this,sponsors);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(SpeakerActivity.this, SpeakersDetailActivity.class);
-                i.putExtra(Utils.SPEAKER_EXTRA, speakers.get(position));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(sponsors.get(position).getUrl()));
                 startActivity(i);
             }
         });
 
-        Devfest2015Application.devfestBackend.child(Utils.BACKEND_SPEAKER_PATH).addValueEventListener(new ValueEventListener() {
+        Devfest2015Application.devfestBackend.child(Utils.BACKEND_SPONSOR_PATH).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                speakers.clear();
-                for(DataSnapshot speaker:dataSnapshot.getChildren()){
-                    speakers.add(speaker.getValue(Speaker.class));
+                sponsors.clear();
+                for(DataSnapshot sponsorType:dataSnapshot.getChildren()){
+                    for(DataSnapshot sponsor:sponsorType.getChildren() ){
+                        sponsors.add(sponsor.getValue(Sponsor.class));
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

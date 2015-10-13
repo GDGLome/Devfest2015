@@ -64,7 +64,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private RecyclerView mDrawerList;
     private View mFragmentContainerView;
 
-    private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
@@ -78,7 +77,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
         if (savedInstanceState != null) {
-            mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+           // mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
     }
@@ -97,7 +96,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems);
         adapter.setNavigationDrawerCallbacks(this);
         mDrawerList.setAdapter(adapter);
-        selectItem(mCurrentSelectedPosition);
+        //selectItem(mCurrentSelectedPosition);
         return view;
     }
 
@@ -120,11 +119,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     public List<NavigationItem> getMenu() {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
-        items.add(new NavigationItem("Le programme", getResources().getDrawable(R.drawable.ic_schedule)));
+        items.add(new NavigationItem("Le Devfest Lomé 2015", getResources().getDrawable(R.drawable.ic_schedule)));
         items.add(new NavigationItem("Les speakers", getResources().getDrawable(R.drawable.ic_speaker)));
         items.add(new NavigationItem("Les partenaires & sponsors", getResources().getDrawable(R.drawable.ic_sponsors)));
         items.add(new NavigationItem("A propos", getResources().getDrawable(R.drawable.ic_about)));
-        items.add(new NavigationItem("Aide", getResources().getDrawable(R.drawable.ic_help)));
         return items;
     }
 
@@ -182,7 +180,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     }
 
     private void selectItem(int position) {
-        mCurrentSelectedPosition = position;
+        //mCurrentSelectedPosition = position;
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
@@ -216,11 +214,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mCallbacks = null;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

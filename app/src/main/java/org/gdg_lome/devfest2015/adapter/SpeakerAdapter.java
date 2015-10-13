@@ -1,4 +1,4 @@
-package org.gdg_lome.devfest2015;
+package org.gdg_lome.devfest2015.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
+import org.gdg_lome.devfest2015.R;
+import org.gdg_lome.devfest2015.Utils;
 import org.gdg_lome.devfest2015.model.Speaker;
 import org.gdg_lome.devfest2015.model.Speaker;
 
@@ -82,6 +84,7 @@ public class SpeakerAdapter extends BaseAdapter {
                 .load(Utils.BACKEND_IMAGES_PATH + speaker.getImage())
                 .asBitmap()
                 .centerCrop()
+                .placeholder(R.drawable.ic_speaker)
                 .into(new BitmapImageViewTarget(viewHolder.speaker_image) {
 
                     @Override

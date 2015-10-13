@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(conferencesFragment, "Conférences");
-        adapter.addFrag(codelabsFragment, "CodLabs");
+        adapter.addFrag(codelabsFragment, "CodeLabs");
         viewPager.setAdapter(adapter);
     }
 
@@ -111,11 +111,14 @@ public class MainActivity extends AppCompatActivity
     public void onNavigationDrawerItemSelected(int position) {
         switch (position){
             case 0:
+                startActivity(new Intent(this,PresentationActivity.class));
                 break;
             case 1:
                 startActivity(new Intent(this,SpeakerActivity.class));
                 break;
-            case 2: startActivity(new Intent(this,AboutActivity.class));
+            case 2: startActivity(new Intent(this,SponsorActivity.class));
+                break;
+            case 3: startActivity(new Intent(this,AboutActivity.class));
                 break;
         }
 

@@ -1,4 +1,4 @@
-package org.gdg_lome.devfest2015;
+package org.gdg_lome.devfest2015.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.gdg_lome.devfest2015.R;
 import org.gdg_lome.devfest2015.model.Track;
 
 import java.util.ArrayList;

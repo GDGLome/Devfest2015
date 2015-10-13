@@ -1,9 +1,7 @@
 package org.gdg_lome.devfest2015;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -17,14 +15,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import org.gdg_lome.devfest2015.model.Speaker;
+import org.gdg_lome.devfest2015.model.Track;
 
 
-public class SpeakersDetailActivity extends AppCompatActivity {
+public class TracksDetailActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private ImageView speaker_image;
     private TextView speaker_name;
     private TextView speaker_description;
-    private Speaker speaker;
+    private Track track;
     private Bundle extras;
 
 
@@ -32,7 +31,7 @@ public class SpeakersDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speaker_detail);
+        setContentView(R.layout.activity_track_detail);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -41,22 +40,18 @@ public class SpeakersDetailActivity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
 
-        speaker = (Speaker) extras.getSerializable(Utils.SPEAKER_EXTRA);
+        track = (Track) extras.getSerializable(Utils.TRACK_EXTRA);
 
         speaker_image = (ImageView) findViewById(R.id.speaker_image);
         speaker_name = (TextView) findViewById(R.id.speaker_name);
         speaker_description = (TextView) findViewById(R.id.speaker_description);
-
+/*
         speaker_name.setText(speaker.getName());
         speaker_description.setText(speaker.getDescription());
-        Drawable d = getResources().getDrawable(R.drawable.ic_speaker);
-        Drawable placeholder = DrawableCompat.wrap(d);
-        DrawableCompat.setTint(placeholder,getResources().getColor(android.R.color.white));
         Glide.with(this)
                 .load(Utils.BACKEND_IMAGES_PATH + speaker.getImage())
                 .asBitmap()
                 .centerCrop()
-                .placeholder(placeholder)
                 .into(new BitmapImageViewTarget(speaker_image) {
 
                     @Override
@@ -66,7 +61,7 @@ public class SpeakersDetailActivity extends AppCompatActivity {
                         circularBitmapDrawable.setCircular(true);
                         speaker_image.setImageDrawable(circularBitmapDrawable);
                     }
-                });
+                }); */
 
     }
 

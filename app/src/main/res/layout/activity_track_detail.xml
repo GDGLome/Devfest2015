@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <include android:id="@+id/toolbar_actionbar"
+        layout="@layout/toolbar_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffe8e8e8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:background="@color/myPrimaryColor">
+            <TextView
+                android:id="@+id/track_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Material Design"
+                android:textSize="30sp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"/>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/track_title"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_schedule"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+
+                <LinearLayout android:id="@+id/center_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:textSize="20sp"
+                        android:typeface="sans"
+                        android:id="@+id/track_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="Samedi 24 Oct. 2015"
+                        android:textColor="@android:color/white"
+                        android:layout_centerVertical="true"
+                        android:ellipsize="end"/>
+                    <TextView
+                        android:id="@+id/track_start_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="08:00 - 09:35"
+                        android:ellipsize="end"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/list_adresse"
+                        android:typeface="sans"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            </RelativeLayout>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:cardview="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            cardview:cardElevation="2dp"
+            android:gravity="center_vertical"
+            android:layout_margin="10dp"
+            cardview:cardUseCompatPadding="true">
+            <TextView
+                android:id="@+id/track_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="Details........."/>
+            </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:cardview="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            cardview:cardElevation="2dp"
+            android:gravity="center_vertical"
+            android:layout_margin="10dp"
+            cardview:cardUseCompatPadding="true">
+            <include
+                layout="@layout/speaker_items"/>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
+
+</RelativeLayout>
+
+

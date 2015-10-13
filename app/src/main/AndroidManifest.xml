@@ -27,6 +27,10 @@
         <activity android:name=".scanner.ScannerActivity"/>
         <activity android:name=".SpeakersDetailActivity"/>
         <activity android:name=".SpeakerActivity"/>
+        <activity android:name=".SponsorActivity"/>
+        <activity android:name=".AboutActivity"/>
+        <activity android:name=".PresentationActivity"/>
+        <activity android:name=".TracksDetailActivity"/>
     </application>
 
 </manifest>

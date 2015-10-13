@@ -14,6 +14,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import org.gdg_lome.devfest2015.adapter.ScheduleAdapter;
 import org.gdg_lome.devfest2015.model.Schedule;
 import org.gdg_lome.devfest2015.model.Track;
 
@@ -83,7 +84,8 @@ public class ScheduleFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getActivity(), SpeakersDetailActivity.class);
+                Intent i = new Intent(getActivity(), TracksDetailActivity.class);
+                i.putExtra(Utils.TRACK_EXTRA,tracks.get(position));
                 startActivity(i);
             }
         });
