@@ -35,6 +35,7 @@ public class Utils {
     public static final String SCHEDULE_ID="schedule_id";
     public static final String SPEAKER_EXTRA="speaker";
     public static final String TRACK_EXTRA="track";
+    public static final String SCHEDULE_DATE_EXTRA="schedule_date";
     public static final String BACKEND_ATTENDEE_PATH="attendees";
     public static final String BACKEND_SCHEDULE_PATH="schedules";
     public static final String BACKEND_CONFERENCE_PATH="0";

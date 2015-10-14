@@ -38,6 +38,7 @@ public class TracksDetailActivity extends AppCompatActivity {
     private TextView track_room;
     private Track track;
     private Bundle extras;
+    private String schedule_date;
 
 
 
@@ -54,6 +55,7 @@ public class TracksDetailActivity extends AppCompatActivity {
         extras = getIntent().getExtras();
 
         track = (Track) extras.getSerializable(Utils.TRACK_EXTRA);
+        schedule_date = extras.getString(Utils.SCHEDULE_DATE_EXTRA);
 
         speaker = (CardView) findViewById(R.id.speaker);
         speaker_image = (ImageView) findViewById(R.id.speaker_image);
@@ -72,7 +74,7 @@ public class TracksDetailActivity extends AppCompatActivity {
         schedule_icon.setImageDrawable(schedule_base_icon);
 
         track_title.setText(track.getTitle());
-        track_date.setText("Samedi 24 Oct. 2015");
+        track_date.setText(schedule_date);
         track_start_end.setText(track.getStart()+" - "+track.getEnd());
         track_description.setText(track.getDescription());
         track_room.setText(track.getRoom());

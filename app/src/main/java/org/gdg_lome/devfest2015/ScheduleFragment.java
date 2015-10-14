@@ -86,6 +86,7 @@ public class ScheduleFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getActivity(), TracksDetailActivity.class);
                 i.putExtra(Utils.TRACK_EXTRA,tracks.get(position));
+                i.putExtra(Utils.SCHEDULE_DATE_EXTRA,schedule.getDate());
                 startActivity(i);
             }
         });
