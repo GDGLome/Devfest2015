@@ -10,16 +10,16 @@ import java.io.Serializable;
  */
 public class Speaker implements Serializable {
 
-    @JsonProperty("name") private String name;
-    @JsonProperty("description") private String description;
-    @JsonProperty("image") private String image;
+    private String name;
+    private String description;
+    private String image;
 
-    @JsonCreator
+
     public Speaker() {
     }
 
-    @JsonCreator
-    public Speaker(@JsonProperty("name") String name,@JsonProperty("description") String description,@JsonProperty("image") String image) {
+
+    public Speaker(String name,String description,String image) {
         this.name = name;
         this.description = description;
         this.image = image;

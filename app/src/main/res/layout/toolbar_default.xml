@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar
-android:layout_height="wrap_content"
-android:layout_width="match_parent"
-android:background="@color/myPrimaryColor"
-android:elevation="2dp"
-android:minHeight="@dimen/abc_action_bar_default_height_material"
-android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
-xmlns:android="http://schemas.android.com/apk/res/android" />
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/myPrimaryColor"
+    android:elevation="2dp"
+    android:minHeight="@dimen/abc_action_bar_default_height_material"
+    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

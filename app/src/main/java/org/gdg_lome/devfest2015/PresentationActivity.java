@@ -4,13 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.Map;
 
 
 public class PresentationActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
+    private TextView title;
+    private TextView description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +31,23 @@ public class PresentationActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Présentation");
+
+        title = (TextView) findViewById(R.id.title);
+        description = (TextView) findViewById(R.id.description);
+
+        Devfest2015Application.devfestBackend.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<String, String> event = (Map<String, String>) dataSnapshot.getValue();
+                title.setText(Html.fromHtml("<u>"+event.get("title")+"</u>"));
+                description.setText(Html.fromHtml("<p style=\"text-align:justify\">"+event.get("description")+"</p>"));
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
     }
 

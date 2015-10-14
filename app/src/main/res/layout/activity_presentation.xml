@@ -3,8 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
-    <include android:id="@+id/toolbar_actionbar" layout="@layout/toolbar_default"
+    <include android:id="@+id/toolbar_actionbar" layout="@layout/toolbar_transparent"
         android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <fragment
+                android:id="@+id/map_fragment"
+                android:name="org.gdg_lome.devfest2015.MapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text=""/>
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
 
 </RelativeLayout>
 

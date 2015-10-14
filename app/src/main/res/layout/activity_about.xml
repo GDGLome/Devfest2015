@@ -5,6 +5,52 @@
     android:background="@android:color/white">
     <include android:id="@+id/toolbar_actionbar" layout="@layout/toolbar_default"
         android:layout_width="match_parent" android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_below="@+id/toolbar_actionbar"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@mipmap/ic_launcher"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DevFest Lomé 2015 V 1.0"/>
+
+        <TextView
+            android:id="@+id/contributors"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Contributeurs:"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Séti AFANOU, Technical Lead and Senior Developer"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amen AMOUZOU, Project manager"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Folly AMOUZOU, Junior Developer"/>
+    </LinearLayout>
+
 
 </RelativeLayout>
 

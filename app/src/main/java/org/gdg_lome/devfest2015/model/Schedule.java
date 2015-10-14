@@ -1,26 +1,22 @@
 package org.gdg_lome.devfest2015.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
 
 /**
  * Created by setico on 12/10/15.
  */
 public class Schedule implements Serializable {
-    @JsonProperty("date") private String date;
-    @JsonProperty("title") private String title;
-    @JsonProperty("description") private String description;
-    @JsonProperty("comment") private String comment;
-    @JsonProperty("tracks") private Track [] tracks;
+    private String date;
+    private String title;
+    private String description;
+    private String comment;
+    private Track [] tracks;
 
-    @JsonCreator
+
     public Schedule() {
     }
 
-    @JsonCreator
-    public Schedule(@JsonProperty("date") String date,@JsonProperty("title") String title,@JsonProperty("description") String description,@JsonProperty("comment") String comment,@JsonProperty("tracks") Track[] tracks) {
+    public Schedule(String date, String title, String description, String comment, Track[] tracks) {
         this.date = date;
         this.title = title;
         this.description = description;

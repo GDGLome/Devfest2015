@@ -9,17 +9,17 @@ import java.io.Serializable;
  * Created by setico on 12/10/15.
  */
 public class Attendee implements Serializable {
-    @JsonProperty("id") private String id;
-    @JsonProperty("name") private String name;
-    @JsonProperty("email") private String email;
-    @JsonProperty("barcode") private Barcode barcode;
+    private String id;
+    private String name;
+    private String email;
+    private Barcode barcode;
 
-    @JsonCreator
+
     public Attendee(){
     }
 
-    @JsonCreator
-    public Attendee(@JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("email") String email, @JsonProperty("barcode") Barcode barcode) {
+
+    public Attendee(String id, String name, String email, Barcode barcode) {
         this.id = id;
         this.name = name;
         this.email = email;

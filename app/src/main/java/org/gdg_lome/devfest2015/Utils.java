@@ -43,6 +43,8 @@ public class Utils {
     public static final String BACKEND_CONFERENCE_PATH="0";
     public static final String BACKEND_CODELAB_PATH="1";
     public static final String BACKEND_TRACK_PATH="tracks";
+    public static final String BACKEND_BOOKMARK_PATH="bookmarks";
+    public static final String BACKEND_VENUE_PATH="venue";
     public static final String BACKEND_SPEAKER_PATH="speakers";
     public static final String BACKEND_SPONSOR_PATH="sponsors";
     public static final String BACKEND_IMAGES_PATH="http://devfest.gdg-lome.org";
@@ -177,4 +179,6 @@ public class Utils {
                 Boolean.parseBoolean(context.getString(R.string.pref_agenda_default)));
 
     }
+
+
 }

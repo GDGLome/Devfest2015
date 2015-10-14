@@ -9,17 +9,17 @@ import java.io.Serializable;
  * Created by setico on 12/10/15.
  */
 public class Barcode implements Serializable {
-    @JsonProperty("status") private String status;
-    @JsonProperty("barcode") private String barcode;
-    @JsonProperty("checkin_type") private int checkin_type;
-    @JsonProperty("created") private String created;
-    @JsonProperty("changed") private String changed;
+    private String status;
+    private String barcode;
+    private int checkin_type;
+    private String created;
+    private String changed;
 
-    @JsonCreator
+
     public Barcode(){
     }
-    @JsonCreator
-    public Barcode(@JsonProperty("status") String status,@JsonProperty("barcode") String barcode,@JsonProperty("checkin_type") int checkin_type,@JsonProperty("created") String created,@JsonProperty("changed") String changed) {
+
+    public Barcode(String status, String barcode, int checkin_type, String created, String changed) {
         this.status = status;
         this.barcode = barcode;
         this.checkin_type = checkin_type;

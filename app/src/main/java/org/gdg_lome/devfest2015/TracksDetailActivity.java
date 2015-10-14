@@ -10,6 +10,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,10 +19,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import org.gdg_lome.devfest2015.model.Speaker;
 import org.gdg_lome.devfest2015.model.Track;
 import org.w3c.dom.Text;
+
+import java.math.BigInteger;
 
 
 public class TracksDetailActivity extends AppCompatActivity {
@@ -39,8 +45,79 @@ public class TracksDetailActivity extends AppCompatActivity {
     private Track track;
     private Bundle extras;
     private String schedule_date;
+    private String track_hex_id;
+    private MenuItem item_bookmark;
+    private boolean bookmarked = false;
 
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_track, menu);
+        item_bookmark = menu.findItem(R.id.action_bookmark);
+
+        Devfest2015Application.devfestBackend
+                .child(Utils.BACKEND_BOOKMARK_PATH)
+                .child(Devfest2015Application.prefs.getString(Utils.PREFS_ATTENDEE_ID, null))
+                .child(track_hex_id)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        bookmarked = dataSnapshot.exists();
+                        if(bookmarked){
+                            item_bookmark.setIcon(R.drawable.ic_bookmark);
+                        }else {
+                            item_bookmark.setIcon(R.drawable.ic_bookmark_outline);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        }
+
+        if (id == R.id.action_bookmark) {
+            if(!bookmarked)
+                Devfest2015Application.devfestBackend
+                        .child(Utils.BACKEND_BOOKMARK_PATH)
+                        .child(Devfest2015Application.prefs.getString(Utils.PREFS_ATTENDEE_ID, null))
+                        .child(track_hex_id)
+                        .setValue(track);
+            else
+                Devfest2015Application.devfestBackend
+                        .child(Utils.BACKEND_BOOKMARK_PATH)
+                        .child(Devfest2015Application.prefs.getString(Utils.PREFS_ATTENDEE_ID, null))
+                        .child(track_hex_id)
+                        .removeValue();
+
+            return true;
+        }
+
+
+        if(id==android.R.id.home){
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +132,10 @@ public class TracksDetailActivity extends AppCompatActivity {
         extras = getIntent().getExtras();
 
         track = (Track) extras.getSerializable(Utils.TRACK_EXTRA);
+        track_hex_id = String.format("%x", new BigInteger(1, track.getTitle().getBytes(/*YOUR_CHARSET?*/)));
+
+
+
         schedule_date = extras.getString(Utils.SCHEDULE_DATE_EXTRA);
 
         speaker = (CardView) findViewById(R.id.speaker);
@@ -110,30 +191,4 @@ public class TracksDetailActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_track, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(this, SettingsActivity.class));
-            return true;
-        }
-
-        if(id==android.R.id.home){
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
