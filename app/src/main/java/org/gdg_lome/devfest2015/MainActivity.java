@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.action_settings:
-                //startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                startActivity(new Intent(this, SettingsActivity.class));
                 break;
         }
 

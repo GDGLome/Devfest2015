@@ -1,11 +1,13 @@
 package org.gdg_lome.devfest2015;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
@@ -153,5 +155,26 @@ public class Utils {
         }
 
         return bitmap;
+    }
+
+    public static boolean getAgendaPrefs(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(context.getString(R.string.pref_agenda_key),
+                Boolean.parseBoolean(context.getString(R.string.pref_agenda_default)));
+
+    }
+
+    public static boolean getNotifPrefs(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(context.getString(R.string.pref_notif_key),
+                Boolean.parseBoolean(context.getString(R.string.pref_agenda_default)));
+
+    }
+
+    public static boolean getNotePrefs(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(context.getString(R.string.pref_note_key),
+                Boolean.parseBoolean(context.getString(R.string.pref_agenda_default)));
+
     }
 }

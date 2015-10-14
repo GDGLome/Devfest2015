@@ -31,6 +31,7 @@
         <activity android:name=".AboutActivity"/>
         <activity android:name=".PresentationActivity"/>
         <activity android:name=".TracksDetailActivity"/>
+        <activity android:name=".SettingsActivity"/>
     </application>
 
 </manifest>

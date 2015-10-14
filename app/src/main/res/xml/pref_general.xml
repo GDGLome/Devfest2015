@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <CheckBoxPreference
+        android:title="@string/pref_agenda_label"
+        android:key="@string/pref_agenda_key"
+        android:summaryOff="@string/pref_agenda_true"
+        android:summaryOn="@string/pref_agenda_true"
+        android:defaultValue="@string/pref_agenda_default" />
+
+    <CheckBoxPreference
+        android:title="@string/pref_notif_label"
+        android:key="@string/pref_notif_key"
+        android:summaryOff="@string/pref_notif_true"
+        android:summaryOn="@string/pref_notif_true"
+        android:defaultValue="@string/pref_notif_default" />
+
+    <CheckBoxPreference
+        android:title="@string/pref_note_label"
+        android:key="@string/pref_note_key"
+        android:summaryOff="@string/pref_note_true"
+        android:summaryOn="@string/pref_note_true"
+        android:defaultValue="@string/pref_note_default" />
+
+</PreferenceScreen>
