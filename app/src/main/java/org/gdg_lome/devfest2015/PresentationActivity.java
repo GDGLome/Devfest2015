@@ -1,17 +1,26 @@
 package org.gdg_lome.devfest2015;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.Map;
 
@@ -21,6 +30,8 @@ public class PresentationActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TextView title;
     private TextView description;
+    private TextView lieu;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,8 @@ public class PresentationActivity extends AppCompatActivity {
 
         title = (TextView) findViewById(R.id.title);
         description = (TextView) findViewById(R.id.description);
+        lieu = (TextView) findViewById(R.id.lieu);
+        image = (ImageView) findViewById(R.id.image);
 
         Devfest2015Application.devfestBackend.addValueEventListener(new ValueEventListener() {
             @Override
@@ -41,6 +54,10 @@ public class PresentationActivity extends AppCompatActivity {
                 Map<String, String> event = (Map<String, String>) dataSnapshot.getValue();
                 title.setText(Html.fromHtml("<u>"+event.get("title")+"</u>"));
                 description.setText(Html.fromHtml("<p style=\"text-align:justify\">"+event.get("description")+"</p>"));
+                lieu.setText(Html.fromHtml("<u>Lieu</u>"));
+                Glide.with(PresentationActivity.this)
+                        .load(event.get("image"))
+                        .into(image);
             }
 
             @Override
@@ -48,6 +65,11 @@ public class PresentationActivity extends AppCompatActivity {
 
             }
         });
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.map_fragment, new MapFragment())
+                .commit();
 
     }
 

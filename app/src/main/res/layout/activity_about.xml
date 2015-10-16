@@ -9,10 +9,11 @@
         android:layout_below="@+id/toolbar_actionbar"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:paddingTop="50dp"
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
+            android:layout_marginTop="30dp"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@mipmap/ic_launcher"/>
@@ -31,6 +32,13 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Contributeurs:"/>
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/listStyle"/>
 
         <TextView
             android:layout_marginTop="5dp"

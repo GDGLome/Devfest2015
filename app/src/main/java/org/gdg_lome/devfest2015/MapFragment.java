@@ -101,7 +101,7 @@ public class MapFragment extends Fragment {
                                 .position(new LatLng(new Double(venue.getLocation().getLat()),
                                         new Double(venue.getLocation().getLng())))
                 );
-
+/*
                 LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();
                 LatLng targetLocationLatLng = new LatLng(new Double(venue.getLocation().getLat()),
                         new Double((venue.getLocation().getLng())));
@@ -109,7 +109,7 @@ public class MapFragment extends Fragment {
                 boundsBuilder.include(currentLocationLatLng);
                 boundsBuilder.include(targetLocationLatLng);
                 LatLngBounds bounds = boundsBuilder.build();
-                map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 1));
+                map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 1));*/
             }
 
             @Override

@@ -28,9 +28,9 @@ import java.io.IOException;
  * Created by setico on 11/10/15.
  */
 public class Utils {
-    public static final String TOKEN ="AK5I2DJWWCZ2BTLM7UBK";
-    public static final String EVENT_ID="17036476560";
-    public static final String EVENT_URL="https://www.eventbrite.com/e/google-io-extended-lome-2015-tickets-17036476560";
+    public static final String TOKEN ="3LRK2TCXC7UVJSXZRNCH";
+    public static final String EVENT_ID="18470364357";
+    public static final String EVENT_URL="https://www.eventbrite.fr/e/billets-gdg-lome-devfest-2015-18470364357";
     public static final String ATTENDEES_URL="https://www.eventbriteapi.com/v3/events/"+EVENT_ID+"/attendees/?token="+TOKEN;
     public static final String BACKEND_URL = "https://devfestlome.firebaseio.com";
     public static final String PREFS_ATTENDEE_ID="attendee_id";
@@ -46,6 +46,7 @@ public class Utils {
     public static final String BACKEND_BOOKMARK_PATH="bookmarks";
     public static final String BACKEND_VENUE_PATH="venue";
     public static final String BACKEND_SPEAKER_PATH="speakers";
+    public static final String BACKEND_CONTRIBUTOR_PATH="contributors";
     public static final String BACKEND_SPONSOR_PATH="sponsors";
     public static final String BACKEND_IMAGES_PATH="http://devfest.gdg-lome.org";
 
