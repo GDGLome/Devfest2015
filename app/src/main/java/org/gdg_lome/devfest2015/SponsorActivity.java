@@ -24,9 +24,10 @@ import java.util.ArrayList;
 public class SponsorActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private GridView list;
-    private SponsorAdapter adapter;
-    private ArrayList<Sponsor> sponsors = new ArrayList<Sponsor>();
+    private ArrayList<Sponsor> sponsors;
+    private SponsorFragment sponsorFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,28 +37,97 @@ public class SponsorActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Les sponsors");
-        list = (GridView) findViewById(R.id.list);
-        adapter = new SponsorAdapter(this,sponsors);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(sponsors.get(position).getUrl()));
-                startActivity(i);
-            }
-        });
+
 
         Devfest2015Application.devfestBackend.child(Utils.BACKEND_SPONSOR_PATH).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                sponsors.clear();
-                for(DataSnapshot sponsorType:dataSnapshot.getChildren()){
-                    for(DataSnapshot sponsor:sponsorType.getChildren() ){
-                        sponsors.add(sponsor.getValue(Sponsor.class));
-                    }
+                //general
+                sponsors = new ArrayList<Sponsor>();
+                for(DataSnapshot sponsor:dataSnapshot.child(Utils.BACKEND_SPONSOR_GENERAL_PATH).getChildren()){
+                    sponsors.add(sponsor.getValue(Sponsor.class));
                 }
-                adapter.notifyDataSetChanged();
+                if (!sponsors.isEmpty()){
+                    sponsorFragment = new SponsorFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Utils.SPONSOR_EXTRA, sponsors);
+                    bundle.putString(Utils.SPONSOR_ID, Utils.BACKEND_SPONSOR_GENERAL_PATH);
+                    sponsorFragment.setArguments(bundle);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.general,sponsorFragment)
+                            .commit();
+                }
+
+                //platinium
+                sponsors = new ArrayList<Sponsor>();
+                for(DataSnapshot sponsor:dataSnapshot.child(Utils.BACKEND_SPONSOR_PLATINIUM_PATH).getChildren()){
+                    sponsors.add(sponsor.getValue(Sponsor.class));
+                }
+                if (!sponsors.isEmpty()){
+                    sponsorFragment = new SponsorFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Utils.SPONSOR_EXTRA, sponsors);
+                    bundle.putString(Utils.SPONSOR_ID, Utils.BACKEND_SPONSOR_PLATINIUM_PATH);
+                    sponsorFragment.setArguments(bundle);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.platinium, sponsorFragment)
+                            .commit();
+                }
+
+                //gold
+                sponsors = new ArrayList<Sponsor>();
+                for(DataSnapshot sponsor:dataSnapshot.child(Utils.BACKEND_SPONSOR_GOLD_PATH).getChildren()){
+                    sponsors.add(sponsor.getValue(Sponsor.class));
+                }
+                if (!sponsors.isEmpty()){
+                    sponsorFragment = new SponsorFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Utils.SPONSOR_EXTRA, sponsors);
+                    bundle.putString(Utils.SPONSOR_ID, Utils.BACKEND_SPONSOR_GOLD_PATH);
+                    sponsorFragment.setArguments(bundle);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.gold,sponsorFragment)
+                            .commit();
+                }
+
+                //silver
+                sponsors = new ArrayList<Sponsor>();
+                for(DataSnapshot sponsor:dataSnapshot.child(Utils.BACKEND_SPONSOR_SILVER_PATH).getChildren()){
+                    sponsors.add(sponsor.getValue(Sponsor.class));
+                }
+                if (!sponsors.isEmpty()){
+                    sponsorFragment = new SponsorFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Utils.SPONSOR_EXTRA, sponsors);
+                    bundle.putString(Utils.SPONSOR_ID, Utils.BACKEND_SPONSOR_SILVER_PATH);
+                    sponsorFragment.setArguments(bundle);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.silver,sponsorFragment)
+                            .commit();
+                }
+
+                //bronze
+                sponsors = new ArrayList<Sponsor>();
+                for(DataSnapshot sponsor:dataSnapshot.child(Utils.BACKEND_SPONSOR_BRONZE_PATH).getChildren()){
+                    sponsors.add(sponsor.getValue(Sponsor.class));
+                }
+                if (!sponsors.isEmpty()){
+                    sponsorFragment = new SponsorFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Utils.SPONSOR_EXTRA, sponsors);
+                    bundle.putString(Utils.SPONSOR_ID,Utils.BACKEND_SPONSOR_BRONZE_PATH);
+                    sponsorFragment.setArguments(bundle);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.bronze,sponsorFragment)
+                            .commit();
+                }
+
+
             }
 
             @Override

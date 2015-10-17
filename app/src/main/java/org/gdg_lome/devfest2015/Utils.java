@@ -37,6 +37,8 @@ public class Utils {
     public static final String SCHEDULE_ID="schedule_id";
     public static final String SPEAKER_EXTRA="speaker";
     public static final String TRACK_EXTRA="track";
+    public static final String SPONSOR_EXTRA="sponsor";
+    public static final String SPONSOR_ID="sponsor_id";
     public static final String SCHEDULE_DATE_EXTRA="schedule_date";
     public static final String BACKEND_ATTENDEE_PATH="attendees";
     public static final String BACKEND_SCHEDULE_PATH="schedules";
@@ -48,6 +50,11 @@ public class Utils {
     public static final String BACKEND_SPEAKER_PATH="speakers";
     public static final String BACKEND_CONTRIBUTOR_PATH="contributors";
     public static final String BACKEND_SPONSOR_PATH="sponsors";
+    public static final String BACKEND_SPONSOR_GENERAL_PATH="general";
+    public static final String BACKEND_SPONSOR_PLATINIUM_PATH="platinium";
+    public static final String BACKEND_SPONSOR_GOLD_PATH="gold";
+    public static final String BACKEND_SPONSOR_SILVER_PATH="silver";
+    public static final String BACKEND_SPONSOR_BRONZE_PATH="bronze";
     public static final String BACKEND_IMAGES_PATH="http://devfest.gdg-lome.org";
 
 

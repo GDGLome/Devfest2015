@@ -1,9 +1,11 @@
 package org.gdg_lome.devfest2015.model;
 
+import java.io.Serializable;
+
 /**
  * Created by setico on 13/10/15.
  */
-public class Sponsor {
+public class Sponsor implements Serializable {
     private String name;
     private String logo;
     private String url;

@@ -1,9 +1,11 @@
 package org.gdg_lome.devfest2015.model;
 
+import java.io.Serializable;
+
 /**
  * Created by setico on 14/10/15.
  */
-public class Venue {
+public class Venue implements Serializable {
 
     private String name;
     private Location location;
