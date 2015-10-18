@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity
         codelabsFragment.setArguments(codelab_extras);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(conferencesFragment, "Conférences");
-        adapter.addFrag(codelabsFragment, "CodeLabs");
+        adapter.addFrag(conferencesFragment, "Conférences \n 24 Oct. 2015");
+        adapter.addFrag(codelabsFragment, "CodeLabs\n" +
+                " 25 Oct. 2015");
         viewPager.setAdapter(adapter);
     }
 

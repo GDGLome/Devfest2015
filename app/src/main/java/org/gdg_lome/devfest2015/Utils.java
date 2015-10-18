@@ -28,7 +28,7 @@ import java.io.IOException;
  * Created by setico on 11/10/15.
  */
 public class Utils {
-    public static final String TOKEN ="3LRK2TCXC7UVJSXZRNCH";
+    public static final String TOKEN ="";
     public static final String EVENT_ID="18470364357";
     public static final String EVENT_URL="https://www.eventbrite.fr/e/billets-gdg-lome-devfest-2015-18470364357";
     public static final String ATTENDEES_URL="https://www.eventbriteapi.com/v3/events/"+EVENT_ID+"/attendees/?token="+TOKEN;
